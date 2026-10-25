@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#075653">
+<title>Elderly Emotional Companion</title>
+<style>
+:root{--teal:#075653;--green:#0b9487;--cream:#fffaf0;--mint:#e1f7f0;--text:#163c46;--muted:#617782;--border:#e8e8df}
+*{box-sizing:border-box}body{margin:0;font-family:"Segoe UI",Arial,sans-serif;background:var(--cream);color:var(--text)}button,input{font:inherit}button{cursor:pointer}
+.app{display:grid;grid-template-columns:235px minmax(0,1fr);min-height:100vh}.sidebar{background:linear-gradient(180deg,#075653,#063f42);color:#fff;padding:28px 16px;display:flex;flex-direction:column;gap:12px}
+.brand{font-size:21px;font-weight:750;line-height:1.3;padding:8px;margin-bottom:24px}.brand small{display:block;font-size:13px;font-weight:400;margin-top:8px;opacity:.85}
+.nav{width:100%;border:0;border-radius:12px;padding:15px 12px;color:#fff;background:transparent;text-align:left;font-size:16px}.nav:hover,.nav.active{background:#168c82}.sidebar-note{margin-top:auto;text-align:center;line-height:1.7;color:#d7f3e9;padding:20px 5px}
+main{width:100%;max-width:1600px;padding:30px;margin:auto}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px}.online{background:#e4f5e9;color:#176a4c;padding:10px 16px;border-radius:25px;font-size:14px}
+.columns{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(250px,.85fr);gap:22px}.panel{background:#fff;border:1px solid var(--border);border-radius:20px;padding:22px;margin-bottom:20px}
+h1{font-size:clamp(30px,3vw,42px);margin:0 0 12px}h2{font-size:23px;margin:0 0 12px}p{line-height:1.6}.muted{color:var(--muted)}.hero{display:flex;align-items:center;gap:16px;margin-bottom:24px}.hero p{font-size:18px;margin:0}
+.voice-panel{background:linear-gradient(120deg,#e6faf3,#d4f1eb);border:1px solid #a9e8dc;border-radius:22px;padding:25px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;margin-bottom:22px}
+.mic-area{text-align:center}.mic{width:112px;height:112px;border:7px solid #b9ebe0;border-radius:50%;color:#fff;background:var(--green);font-size:43px;box-shadow:0 0 0 5px #d5f3eb}.mic.listening{background:#c45b37;animation:pulse 1.2s infinite}@keyframes pulse{50%{box-shadow:0 0 0 13px #f5d9ca}}
+.primary,.secondary,.danger{border:0;border-radius:12px;padding:13px 17px;font-weight:650}.primary{background:var(--green);color:#fff}.secondary{background:#e8f3ff;color:#175d93}.danger{background:#fff0ec;color:#a13f2a}.mic-area .primary{margin-top:14px}
+.examples{display:grid;gap:8px}.example{background:#fff;border:1px solid #e2f1eb;padding:11px 13px;border-radius:22px;font-size:14px;text-align:left}
+.reminder{display:flex;align-items:center;gap:14px;padding:15px 0;border-bottom:1px solid var(--border)}.reminder:last-child{border-bottom:0}.reminder-icon{min-width:48px;height:48px;border-radius:50%;background:#e0f4fb;display:grid;place-items:center;font-size:23px}.reminder-info{flex:1;min-width:0}.reminder-info strong{font-size:17px}.reminder-info p{margin:4px 0;font-size:14px}.reminder-time{font-size:13px;color:#176b85}
+.quick{width:100%;display:flex;align-items:center;gap:13px;border:0;border-radius:14px;padding:16px;color:#fff;text-align:left;margin-top:10px;background:var(--green)}.quick:nth-of-type(2){background:#338bd0}.quick:nth-of-type(3){background:#7d58bc}.quick:nth-of-type(4){background:#e98c2d}.quick span:first-child{font-size:25px}.quick strong{display:block;margin-bottom:4px}.quick small{opacity:.95}
+.positive{background:#fff0df;color:#8c3d1f}input{width:100%;border:1px solid #ccd9d9;border-radius:10px;padding:12px;margin:6px 0 14px;background:#fff}label{font-weight:600;font-size:14px}.form-actions{display:flex;gap:10px;flex-wrap:wrap}.message{margin-top:14px;padding:12px;border-radius:10px;background:#e5f7ee;display:none;overflow-wrap:anywhere}.footer{background:#fff0df;border-radius:14px;padding:14px;font-size:13px;text-align:center;margin-top:6px}[hidden]{display:none!important}
+@media(max-width:900px){.app{grid-template-columns:1fr}.sidebar{padding:14px}.brand{margin-bottom:0}.sidebar-note{display:none}.nav-list{display:flex;gap:5px;overflow-x:auto}.nav{min-width:max-content;width:auto}main{padding:18px}.columns{grid-template-columns:1fr}}
+@media(max-width:520px){.voice-panel{grid-template-columns:1fr}.hero{align-items:flex-start}.panel{padding:16px}.reminder{gap:9px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand">💚 Elderly Emotional Companion<small>Always Here for You</small></div>
+  <div class="nav-list">
+    <button class="nav active" data-view="home">🏠 Home</button>
+    <button class="nav" data-view="reminders">🔔 Reminders</button>
+    <button class="nav" data-view="voice">🎙️ Voice Assistant</button>
+    <button class="nav" data-view="health">💗 Health &amp; Wellness</button>
+  </div>
+  <div class="sidebar-note">👵🏻 👴🏻<br>Better Days Together ❤️</div>
+</aside>
+<main>
+  <div class="topbar"><span class="muted">Your personal AI companion</span><span class="online">🟢 AI Companion Online</span></div>
+  <section id="home-view">
+    <div class="columns"><div>
+      <div class="hero"><div><h1>Hello! Welcome 🙏</h1><h2>How are you feeling today?</h2><p class="muted">I'm here for you. Helping you feel supported and remember what matters is my job.</p></div></div>
+      <section class="voice-panel" id="voice-panel">
+        <div><h2>Let's Talk</h2><p>Tell me what's on your mind, or ask me to help you remember something.</p><p id="voice-status" class="muted" aria-live="polite">I'm ready to listen whenever you are.</p></div>
+        <div class="mic-area"><button id="mic-button" class="mic" aria-label="Start voice assistant">🎙️</button><br><button id="speak-button" class="primary">🎙️ Tap to Speak</button></div>
+        <div class="examples">
+          <button class="example" data-example="Remind me to take my medicine">“Remind me to take my medicine”</button>
+          <button class="example" data-example="Remind me to drink water">“Remind me to drink water”</button>
+          <button class="example" data-example="I have a doctor appointment tomorrow">“I have a doctor appointment tomorrow”</button>
+        </div>
+      </section>
+      <section class="panel" id="reminder-list-panel"><div class="topbar"><h2>🔔 Today's Reminders</h2><button class="secondary" id="refresh-button">Refresh ↻</button></div><div id="reminders-list" aria-live="polite"><p class="muted">Loading your reminders…</p></div></section>
+    </div><div>
+      <section class="panel"><h2>📅 Today</h2><p id="today-date"></p><h1 id="clock">--:--</h1><p class="muted">Take your day one step at a time.</p></section>
+      <section class="panel positive"><h2>❤️ You Matter!</h2>Your health, happiness, and peace of mind are important.</section>
+      <section class="panel"><h2>⚡ Quick Actions</h2>
+        <button class="quick" data-action="add"><span>➕</span><span><strong>Add a Reminder</strong><small>Medication, appointments, daily tasks</small></span></button>
+        <button class="quick" data-action="voice"><span>🎙️</span><span><strong>Voice Assistant</strong><small>Talk to me — I'm listening</small></span></button>
+        <button class="quick" data-action="health"><span>💗</span><span><strong>Wellness Tips</strong><small>Helpful ideas for everyday well-being</small></span></button>
+        <button class="quick" data-action="family"><span>👨‍👩‍👧</span><span><strong>Family Access</strong><small>Stay connected with loved ones</small></span></button>
+      </section>
+    </div></div>
+  </section>
+  <section class="panel" id="add-view" hidden><h2>➕ Add a Reminder</h2><p class="muted">Enter what you'd like to remember and, if needed, choose a date and time.</p>
+    <form id="reminder-form"><label for="reminder-text">Reminder details</label><input id="reminder-text" required placeholder="For example: Take my medicine"><label for="reminder-time">Date and time (optional)</label><input id="reminder-time" type="datetime-local"><div class="form-actions"><button class="primary" type="submit">Save Reminder</button><button class="secondary" type="button" id="cancel-add">Cancel</button></div></form><div class="message" id="form-message" aria-live="polite"></div>
+  </section>
+  <section class="panel" id="health-view" hidden><h2>💗 Health &amp; Wellness</h2><p>• Follow the schedule recommended by your healthcare professional.</p><p>• Drink water regularly unless your clinician has advised a fluid restriction.</p><p>• Set reminders to help you keep track of your daily routine.</p><p class="muted">This AI companion is not a substitute for professional medical advice.</p></section>
+  <section class="panel" id="family-view" hidden><h2>👨‍👩‍👧 Family Access</h2><p>Family access can be connected here in a future version.</p><p class="muted">Authentication and privacy controls should be implemented before enabling access for family members.</p></section>
+  <footer class="footer">💚 Small moments can bring great happiness. ❤️<br>Elderly Emotional Companion · Powered by Nebius AI</footer>
+</main></div>
+<script>
+/* If the API runs on another host or port, set its base URL here. */
+const API_BASE = "";
+const $ = id => document.getElementById(id);
+function showView(name){["home","add","health","family"].forEach(v=>$(v+"-view").hidden=v!==name);document.querySelectorAll(".nav").forEach(b=>b.classList.toggle("active",b.dataset.view===name));if(name==="add")$("reminder-text").focus();if(name==="home")loadReminders();}
+document.querySelectorAll(".nav").forEach(b=>b.addEventListener("click",()=>{const n=b.dataset.view;if(n==="reminders"){showView("home");$("reminder-list-panel").scrollIntoView({behavior:"smooth"});}else if(n==="voice"){showView("home");$("voice-panel").scrollIntoView({behavior:"smooth"});}else showView(n);}));
+document.querySelectorAll("[data-action]").forEach(b=>b.addEventListener("click",()=>{const a=b.dataset.action;if(a==="add")showView("add");if(a==="voice"){showView("home");$("voice-panel").scrollIntoView({behavior:"smooth"});}if(a==="health")showView("health");if(a==="family")showView("family");}));
+function updateClock(){const n=new Date();$("clock").textContent=n.toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit"});$("today-date").textContent=n.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric"});}updateClock();setInterval(updateClock,30000);
+async function api(path,options={}){const r=await fetch(API_BASE+path,{...options,headers:{"Content-Type":"application/json",...(options.headers||{})}});if(!r.ok)throw new Error("API error "+r.status+": "+(await r.text()).slice(0,250));return r.json();}
+function safeText(v){const s=document.createElement("span");s.textContent=v==null?"":String(v);return s.innerHTML;}
+function details(i){return{title:i.reminder||i.title||i.text||"Reminder",description:i.description||"",time:i.due_at||i.dueAt||i.time||""};}
+function formatTime(v){if(!v)return"Time not set";const d=new Date(v);if(Number.isNaN(d.getTime()))return String(v);return d.toLocaleString("en-US",{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});}
+async function loadReminders(){const list=$("reminders-list");list.innerHTML='<p class="muted">Loading your reminders…</p>';try{const data=await api("/recall_reminders/");const items=Array.isArray(data)?data:(data.reminders||data.items||data.results||[]);if(!items.length){list.innerHTML='<p class="muted">No reminders yet. Select “Add a Reminder” to get started.</p>';return;}list.innerHTML="";items.forEach(i=>{const r=details(i),row=document.createElement("div");row.className="reminder";row.innerHTML=`<div class="reminder-icon">🔔</div><div class="reminder-info"><strong>${safeText(r.title)}</strong><p class="muted">${safeText(r.description)}</p><div class="reminder-time">◷ ${safeText(formatTime(r.time))}</div></div>`;list.appendChild(row);});}catch(e){list.innerHTML=`<p>We couldn't load your reminders.</p><p class="muted">Check that the backend is running and the API endpoint is correct.</p><p class="muted">${safeText(e.message)}</p>`;}}
+$("refresh-button").addEventListener("click",loadReminders);$("cancel-add").addEventListener("click",()=>showView("home"));
+$("reminder-form").addEventListener("submit",async e=>{e.preventDefault();const reminder=$("reminder-text").value.trim(),localTime=$("reminder-time").value,msg=$("form-message"),submit=e.submitter;if(!reminder)return;submit.disabled=true;submit.textContent="Saving…";try{const body={reminder,due_at:localTime?new Date(localTime).toISOString():null,enable_voice:true,enable_sms:false};const result=await api("/add_reminder/",{method:"POST",body:JSON.stringify(body)});msg.style.display="block";msg.style.background="#e5f7ee";msg.textContent="Reminder saved. "+(result.ai_reply||result.reply||result.message||"Your reminder has been added.");speakText(msg.textContent);$("reminder-form").reset();await loadReminders();}catch(err){msg.style.display="block";msg.style.background="#fff0ec";msg.textContent="We couldn't save your reminder: "+err.message;}finally{submit.disabled=false;submit.textContent="Save Reminder";}});
+function speakText(text){if(!("speechSynthesis"in window)){$("voice-status").textContent="Text-to-speech is not supported by this browser.";return;}window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang="en-US";u.rate=.9;window.speechSynthesis.speak(u);}
+document.querySelectorAll("[data-example]").forEach(b=>b.addEventListener("click",()=>{$("reminder-text").value=b.dataset.example;showView("add");}));
+const Recognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+function startVoice(){if(!Recognition){$("voice-status").textContent="Voice input isn't supported in this browser. Try Chrome on localhost, or type your reminder instead.";return;}const rec=new Recognition();rec.lang="en-US";rec.interimResults=false;rec.maxAlternatives=1;const mic=$("mic-button");mic.classList.add("listening");$("voice-status").textContent="Listening… Please speak now.";rec.onresult=e=>{const spoken=e.results[0][0].transcript;$("voice-status").textContent="You said: "+spoken;$("reminder-text").value=spoken;showView("add");$("form-message").style.display="block";$("form-message").textContent="We've transcribed your words. Review them, then select Save Reminder.";};rec.onerror=e=>$("voice-status").textContent="Voice input error: "+e.error;rec.onend=()=>mic.classList.remove("listening");rec.start();}
+$("mic-button").addEventListener("click",startVoice);$("speak-button").addEventListener("click",startVoice);loadReminders();
+</script>
+</body>
+</html>
